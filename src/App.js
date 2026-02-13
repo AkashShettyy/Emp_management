@@ -1,27 +1,19 @@
-import Login from "./Login";
-import Registration from './Registration';
-import Header from './Header';
-import Footer from './Footer';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
- 
- 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EmployeeList from "./components/employees/EmployeeList";
+import EmployeeForm from "./components/employees/EmployeeForm";
+import EmployeeView from "./components/employees/EmployeeView";
+
 function App() {
   return (
-    <BrowserRouter>
-    <Header/>
-      <nav>
-        <Link to="/login">Login</Link> | <Link to="/registration">Registration</Link>
-      </nav>
+    <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
+        <Route path="/" element={<EmployeeList />} />
+        <Route path="/create" element={<EmployeeForm />} />
+        <Route path="/edit/:id" element={<EmployeeForm />} />
+        <Route path="/view/:id" element={<EmployeeView />} />
       </Routes>
-      <Footer/>
-    </BrowserRouter>
+    </Router>
   );
 }
- 
+
 export default App;
- 
- 
