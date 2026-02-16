@@ -7,6 +7,11 @@ import {
 } from "../../services/employeeService";
 
 const EmployeeForm = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  const isEdit = !!id;
+
   const [employee, setEmployee] = useState({
     name: "",
     email: "",
@@ -14,17 +19,12 @@ const EmployeeForm = () => {
     website: "",
   });
 
-  const navigate = useNavigate();
-  const { id } = useParams(); // check if edit mode
-
-  const isEdit = !!id;
-
-  // Load employee data if editing
+  // Load employee when editing
   useEffect(() => {
     if (isEdit) {
       fetchEmployee();
     }
-  }, []);
+  }, [id]);
 
   const fetchEmployee = async () => {
     try {
@@ -35,6 +35,7 @@ const EmployeeForm = () => {
     }
   };
 
+  // Handle input change
   const handleChange = (e) => {
     setEmployee({
       ...employee,
@@ -42,6 +43,7 @@ const EmployeeForm = () => {
     });
   };
 
+  // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -59,31 +61,36 @@ const EmployeeForm = () => {
   };
 
   return (
-    <div>
-      <h2>{isEdit ? "Edit Employee" : "Create Employee"}</h2>
+    <div className="container">
+      <h2 className="page-title">
+        {isEdit ? "Edit Employee" : "Create Employee"}
+      </h2>
 
       <form onSubmit={handleSubmit}>
-        <div>
+
+        <div className="form-group">
           <label>Name</label>
           <input
             type="text"
             name="name"
             value={employee.name}
             onChange={handleChange}
+            required
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label>Email</label>
           <input
             type="email"
             name="email"
             value={employee.email}
             onChange={handleChange}
+            required
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label>Phone</label>
           <input
             type="text"
@@ -93,7 +100,7 @@ const EmployeeForm = () => {
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label>Website</label>
           <input
             type="text"
@@ -103,9 +110,18 @@ const EmployeeForm = () => {
           />
         </div>
 
-        <button type="submit">
-          {isEdit ? "Update" : "Create"}
+        <button className="btn btn-success" type="submit">
+          {isEdit ? "Update Employee" : "Create Employee"}
         </button>
+
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => navigate("/")}
+        >
+          Cancel
+        </button>
+
       </form>
     </div>
   );

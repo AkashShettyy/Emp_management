@@ -1,0 +1,160 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  width: 85%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== TITLE ===== */
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 8px;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #616161;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.btn-success {
+  background-color: #2e7d32;
+  color: white;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+thead {
+  background-color: #f1f3f5;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+}
+
+td {
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+tr:hover {
+  background-color: #fafafa;
+}
+
+/* ===== FORM ===== */
+form {
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #dcdfe4;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+}
+
+/* ===== VIEW PAGE ===== */
+.details-box {
+  margin-top: 15px;
+  line-height: 1.8;
+}
+
+.details-box p {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* ===== BACK BUTTON AREA ===== */
+.actions {
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 13px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}

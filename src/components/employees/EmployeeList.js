@@ -13,9 +13,11 @@ const EmployeeList = () => {
   const fetchEmployees = async () => {
     try {
       const res = await getEmployees();
+      console.log("API Response:", res.data);
       setEmployees(res.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching employees:", error);
+      alert("Failed to fetch employees. Check console for details.");
     }
   };
 
@@ -43,26 +45,32 @@ const EmployeeList = () => {
         </thead>
 
         <tbody>
-          {employees.map((emp) => (
-            <tr key={emp.id}>
-              <td>{emp.id}</td>
-              <td>{emp.name}</td>
-              <td>{emp.email}</td>
-              <td>
-                <button onClick={() => navigate(`/view/${emp.id}`)}>
-                  View
-                </button>
-
-                <button onClick={() => navigate(`/edit/${emp.id}`)}>
-                  Edit
-                </button>
-
-                <button onClick={() => handleDelete(emp.id)}>
-                  Delete
-                </button>
-              </td>
+          {employees.length === 0 ? (
+            <tr>
+              <td colSpan="4">No employees found</td>
             </tr>
-          ))}
+          ) : (
+            employees.map((emp) => (
+              <tr key={emp.id}>
+                <td>{emp.id}</td>
+                <td>{emp.name}</td>
+                <td>{emp.email}</td>
+                <td>
+                  <button onClick={() => navigate(`/view/${emp.id}`)}>
+                    View
+                  </button>
+
+                  <button onClick={() => navigate(`/edit/${emp.id}`)}>
+                    Edit
+                  </button>
+
+                  <button onClick={() => handleDelete(emp.id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
