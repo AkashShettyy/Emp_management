@@ -27,14 +27,28 @@ const EmployeeList = () => {
   };
 
   return (
-    <div>
-      <h2>Employee Management</h2>
+  <div className="container">
 
-      <button onClick={() => navigate("/create")}>
-        Create New Employee
-      </button>
+    <div className="header">
+      <h2 className="page-title">Employee Management</h2>
 
-      <table border="1" cellPadding="10">
+      <div className="header-actions">
+        <button
+          className="btn btn-success"
+          onClick={() => navigate("/create")}
+        >
+          + Add Employee
+        </button>
+      </div>
+    </div>
+
+    {employees.length === 0 ? (
+      <div className="empty-state">
+        <h3>No Employees Found</h3>
+        <p>Start by adding your first employee</p>
+      </div>
+    ) : (
+      <table>
         <thead>
           <tr>
             <th>ID</th>
@@ -45,36 +59,44 @@ const EmployeeList = () => {
         </thead>
 
         <tbody>
-          {employees.length === 0 ? (
-            <tr>
-              <td colSpan="4">No employees found</td>
-            </tr>
-          ) : (
-            employees.map((emp) => (
-              <tr key={emp.id}>
-                <td>{emp.id}</td>
-                <td>{emp.name}</td>
-                <td>{emp.email}</td>
-                <td>
-                  <button onClick={() => navigate(`/view/${emp.id}`)}>
+          {employees.map((emp) => (
+            <tr key={emp.id}>
+              <td>{emp.id}</td>
+              <td>{emp.name}</td>
+              <td>{emp.email}</td>
+              <td>
+                <div className="action-buttons">
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => navigate(`/view/${emp.id}`)}
+                  >
                     View
                   </button>
 
-                  <button onClick={() => navigate(`/edit/${emp.id}`)}>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => navigate(`/edit/${emp.id}`)}
+                  >
                     Edit
                   </button>
 
-                  <button onClick={() => handleDelete(emp.id)}>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(emp.id)}
+                  >
                     Delete
                   </button>
-                </td>
-              </tr>
-            ))
-          )}
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-    </div>
-  );
+    )}
+
+  </div>
+);
+
 };
 
 export default EmployeeList;

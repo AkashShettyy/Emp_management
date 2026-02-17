@@ -24,18 +24,25 @@ const EmployeeView = () => {
   if (!employee) return <h3>Loading...</h3>;
 
   return (
-    <div>
-      <h2>Employee Details</h2>
+  <div className="container">
+    <h2 className="page-title">Employee Details</h2>
 
-      <p><strong>ID:</strong> {employee.id}</p>
-      <p><strong>Name:</strong> {employee.name}</p>
-      <p><strong>Email:</strong> {employee.email}</p>
-      <p><strong>Phone:</strong> {employee.phone}</p>
-      <p><strong>Website:</strong> {employee.website}</p>
+    <div className="view-card">
+      <div className="view-row"><span className="label">ID:</span><span>{employee.id}</span></div>
+      <div className="view-row"><span className="label">Name:</span><span>{employee.name}</span></div>
+      <div className="view-row"><span className="label">Email:</span><span>{employee.email}</span></div>
+      <div className="view-row"><span className="label">Phone:</span><span>{employee.phone}</span></div>
+      <div className="view-row"><span className="label">Website:</span><span>{employee.website}</span></div>
 
-      <button onClick={() => navigate("/")}>Back</button>
+      <br />
+
+      <button className="btn btn-primary" onClick={() => navigate("/")}>
+        Back to List
+      </button>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default EmployeeView;
