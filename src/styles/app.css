@@ -160,3 +160,8 @@ input:focus {
   padding: 45px;
   color: #64748b;
 }
+.btn-success:hover { background: #16a34a; }
+.btn-primary:hover { background: #2563eb; }
+.btn-danger:hover { background: #dc2626; }
+.btn-secondary:hover { background: #475569; }
+
